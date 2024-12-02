@@ -1,2 +1,2 @@
 # BlackJack---Python
-BlackJack in python. First code totally at English
+BlackJack in python. My first code totally at English!
