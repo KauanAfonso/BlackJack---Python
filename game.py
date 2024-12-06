@@ -66,6 +66,7 @@ class Cards:
 
         accumulate = 0
 
+    
         while True:
 
             '''
@@ -87,11 +88,11 @@ class Cards:
                 players_hand[1].append(categories_drawn)
                 accumulate += card_drawn
                 
-                print(players_hand)
-                print(accumulate)
+                print(f"\n{players_hand}\n")
+                print(f"-----------Your Score:{accumulate}--------------\n")
 
 
-                if accumulate > 21:
+                if accumulate >= 21:
                     return accumulate
                     
             else:
@@ -119,14 +120,14 @@ class Game:
         return self.player.get_name()
     
     def response_player(self):
-       
+    
         '''
-        This function will returned the hand's value 
+        This function will returned the hand's value
         after the player have choesen to stop
 
         '''
         
-        value = self.hand_cards_player.cards_played()            
+        value = self.hand_cards_player.cards_played()
         return value
     
 
@@ -136,20 +137,27 @@ player2 = Game(input("Put your name here 2: "))
 name1 = player.get_name()
 name2 = player2.get_name()
 
-print(f"Turn to {name1} play: ")
+print(f"----------Turn to {name1} play -------------")
 value1 = player.response_player()
 
-print(f"Turn to {name2} play")
+print(f"------------Turn to {name2} play---------------")
 value2 = player2.response_player()
 
-    
+
 def find_winner(name1, name2, value1, value2):
 
-    if value1 <=21 and value1 > value2:
-        print(f"{name1} won!")
+    if value1 > 21 and value2 > 21:
+        print("Both players are over 21. It's a draw!")
+    elif value1 > 21:
+        print(f"{name2} won!")  
+    elif value2 > 21:
+        print(f"{name1} won!")  
     elif value1 == value2:
-        print(f"Draw")
+        print("Draw")  
+    elif value1 > value2:
+        print(f"{name1} won!")  
     else:
-        print(f"{name2} won!")
+        print(f"{name2} won!")  
+
 
 find_winner(name1,name2,value1,value2)
